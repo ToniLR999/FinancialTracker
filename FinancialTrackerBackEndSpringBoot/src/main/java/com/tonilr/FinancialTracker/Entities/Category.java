@@ -31,69 +31,45 @@ public class Category {
     private User user;
 
     
-	/*public Category() {
+	public Category() {
 	}
 
-	public Category(String category_name, String description, String password) {
+	public Category(String category_name, String description) {
 		super();
-		this.username = username;
-		this.email = email;
-		this.password = password;
+		this.category_name = category_name;
+		this.description = description;
 	}
 
-	public Long getUser_Id() {
-		return user_Id;
+	public Long getCategory_Id() {
+		return category_Id;
 	}
 
-	public void setUser_Id(Long user_Id) {
-		this.user_Id = user_Id;
+	public void setCategory_Id(Long category_Id) {
+		this.category_Id = category_Id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getCategoryName() {
+		return category_name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setCategoryName(String category_name) {
+		this.category_name = category_name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getPassword() {
-		return password;
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	
-	public Date getRegisterDate() {
-		return register_date;
-	}
-
-	public void setPassword(Date register_date) {
-		this.register_date = register_date;
-	}
-
-	public Set<Transaction> getTransactions() {
-		return transactions;
-	}
-
-	public void setTransactions(Set<Transaction> transactions) {
-		this.transactions = transactions;
-	}
-
-	public Set<Category> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(Set<Category> categories) {
-		this.categories = categories;
-	}*/
 }
