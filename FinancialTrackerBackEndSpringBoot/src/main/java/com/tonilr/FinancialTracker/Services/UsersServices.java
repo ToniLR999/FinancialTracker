@@ -5,33 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tonilr.FinancialTracker.Entities.User;
+import com.tonilr.FinancialTracker.Entities.Users;
 import com.tonilr.FinancialTracker.exceptions.UserNotFoundException;
-import com.tonilr.FinancialTracker.repos.UserRepo;
+import com.tonilr.FinancialTracker.repos.UsersRepo;
 
 @Service
-public class UserServices {
+public class UsersServices {
 
 	@Autowired
-	private final UserRepo userRepo;
+	private final UsersRepo userRepo;
 
-	public UserServices(UserRepo userRepo) {
+	public UsersServices(UsersRepo userRepo) {
 		this.userRepo = userRepo;
 	}
 
-	public User addUser(User usuario) {
+	public Users addUser(Users usuario) {
 		return userRepo.save(usuario);
 	}
 
-	public List<User> findAllUsers() {
+	public List<Users> findAllUsers() {
 		return userRepo.findAll();
 	}
 
-	public User updateUser(User usuario) {
+	public Users updateUser(Users usuario) {
 		return userRepo.save(usuario);
 	}
 
-	public User findUserById(Long id) {
+	public Users findUserById(Long id) {
 		return userRepo.findById(id)
 				.orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
 

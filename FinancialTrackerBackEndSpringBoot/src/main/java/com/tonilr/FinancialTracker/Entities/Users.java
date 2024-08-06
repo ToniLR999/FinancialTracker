@@ -15,8 +15,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "Users")
+public class Users {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,10 +37,10 @@ public class User {
     private Set<Category> categories = new HashSet<Category>();
 
 	
-	public User() {
+	public Users() {
 	}
 
-	public User(String username, String email, String password) {
+	public Users(String username, String email, String password) {
 		super();
 		this.username = username;
 		this.email = email;

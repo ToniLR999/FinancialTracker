@@ -28,7 +28,7 @@ public class Category {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "user_Id",nullable = true)
-    private User user;
+    private Users user;
 
     
 	public Category() {
@@ -65,11 +65,11 @@ public class Category {
 	}
 
 
-	public User getUser() {
+	public Users getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Users user) {
 		this.user = user;
 	}
 }

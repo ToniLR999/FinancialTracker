@@ -30,7 +30,7 @@ public class Transaction {
 	private Date register_date;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "user_Id",nullable = true)
-    private User user;
+    private Users user;
 
     
 	
@@ -86,11 +86,11 @@ public class Transaction {
 		this.register_date = register_date;
 	}
 
-	public User getUser() {
+	public Users getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Users user) {
 		this.user = user;
 	}
 
