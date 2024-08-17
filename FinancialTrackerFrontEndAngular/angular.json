@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FinancialTracker:build:production"
+              "buildTarget": "FinancialTracker:build:production"
             },
             "development": {
-              "browserTarget": "FinancialTracker:build:development"
+              "buildTarget": "FinancialTracker:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FinancialTracker:build"
+            "buildTarget": "FinancialTracker:build"
           }
         },
         "test": {
