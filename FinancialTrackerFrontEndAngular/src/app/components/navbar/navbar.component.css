@@ -1,22 +1,16 @@
-body {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
+
+main{
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: auto;
+
+
   
-  html {
-    height: -webkit-fill-available;
-  }
-  
-  main {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 100vh;
-    max-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-  
-  
+}
   .bi {
     vertical-align: -.125em;
     pointer-events: none;
@@ -74,4 +68,8 @@ body {
   .nav-link{
     padding: 1rem;
   }
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   
+    background-color:#21be72;
+  
+  }
