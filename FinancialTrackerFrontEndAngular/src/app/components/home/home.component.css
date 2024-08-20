@@ -117,9 +117,9 @@ main{
         padding: 5px;
     }
       
-    .transactionsData{
+    .APIsData{
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: auto auto auto;
         padding: 5px;
     }
       
