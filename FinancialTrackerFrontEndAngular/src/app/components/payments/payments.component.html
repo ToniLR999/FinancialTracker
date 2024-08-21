@@ -1,55 +1,52 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <title>Financial Tracker</title>
-        <meta charset="utf-8">
-        <meta name="description" content="App to track your finance and mesure all your financial movements"/>
-        <meta name="keywords" content="Financial Tracker, Mesure your finance, Grow your finances"/>
-        <meta name="author" content="ToniLR" />
-        <meta name="copyright" content="ToniLR" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="payments.component.css">
-    </head>
 
-    <body>
-        <header>
-            <h1>Payments</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-        <navbar></navbar>
-        <main>
-            <section id="home">
-                <h2>Welcome to Our Website</h2>
-                <p>This is the home section where you can introduce your website.</p>
-            </section>
-    
-            <section id="about">
-                <h2>About Us</h2>
-                <p>Information about your company or website goes here.</p>
-            </section>
-    
-            <section id="services">
-                <h2>Our Services</h2>
-                <p>Details about the services you offer.</p>
-            </section>
-    
-            <section id="contact">
-                <h2>Contact Us</h2>
-                <p>How to get in touch with you.</p>
-            </section>
-        </main>
-    
-        <footer>
-            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
-        </footer>
-    
-        <script src="script.js"></script> <!-- Link to your JavaScript file -->    
-    </body>
-</html>
+<div class="content">
+    <div class="header">
+        <div class="title">
+            <h2>Payments</h2>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+              <strong>mdo</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+    </div>
+    <div class="financialData">
+        <div class="grid-item balance text-white">
+            <h3>balance</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5"/>
+              </svg>
+        </div>
+        <div class="grid-item income text-white">
+            <h3>income</h3>
+            <a href="">3000</a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5"/>
+              </svg></div>
+        <div class="grid-item expenses text-white">
+            <h3>expenses</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-down-arrow" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm10 11.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0v2.6l-3.613-4.417a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61L13.445 11H10.5a.5.5 0 0 0-.5.5"/>
+              </svg></div>
+        <div class="grid-item savings text-white"><h3>savings</h3></div>
+
+    </div>
+    <div class="graphicAndCardData">
+        <div class="grid-item graphic text-white">graphic</div>
+        <div class="grid-item cards text-white">cards</div>
+    </div>
+    <div class="APIsData">
+        <div class="grid-item crypto text-white">crypto</div>
+        <div class="grid-item bolsa text-white">bolsa</div>
+        <div class="grid-item divisas text-white">divisas</div>
+
+    </div>
+</div>
