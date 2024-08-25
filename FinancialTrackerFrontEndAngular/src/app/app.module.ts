@@ -8,6 +8,13 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MyWalletsComponent } from './components/my-wallets/my-wallets.component';
 import { PaymentsComponent } from './components/payments/payments.component';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { BaseChartDirective } from 'ng2-charts';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -21,9 +28,11 @@ import { PaymentsComponent } from './components/payments/payments.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BaseChartDirective
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

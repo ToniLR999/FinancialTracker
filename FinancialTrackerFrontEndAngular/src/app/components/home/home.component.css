@@ -3,9 +3,7 @@
       vertical-align: -.125em;
       pointer-events: none;
       fill: currentColor;
-    }
-
-    
+    }    
 
     .content{
         position: relative;
@@ -50,16 +48,34 @@
         justify-content: space-between;
         align-items: center;
     }
-    .grid-item {
-        border: 1px solid;
+    .grid-item-yellow {
         border-radius: 1rem;
-
-        border-image:     linear-gradient(to top right, rgba(33,37,41,255) 60%, rgba(222,184,135,1) 100%) 1;
+        background:    linear-gradient(to top right, rgba(33,37,41,255) 70%, rgba(222,184,135,1) 100%);
         font-size: 30px;
+        box-sizing: border-box;
         text-align: center;
         padding: 20px;
         margin-right: 10%;
     }
+    .grid-item-green {
+        border-radius: 1rem;
+        background:    linear-gradient(to top right, rgba(33,37,41,255) 70%, #21be72 100%);
+        font-size: 30px;
+        box-sizing: border-box;
+        text-align: center;
+        padding: 20px;
+        margin-right: 10%;
+    }
+    .grid-item-blue {
+        border-radius: 1rem;
+        background:    linear-gradient(to top right, rgba(33,37,41,255) 70%, cornflowerblue 100%);
+        font-size: 30px;
+        box-sizing: border-box;
+        text-align: center;
+        padding: 20px;
+        margin-right: 10%;
+    }
+
       .icon-item-yellow{
         height: 45px;
         width: 45px;
