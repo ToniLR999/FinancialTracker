@@ -107,6 +107,12 @@
         max-height: 300px; /* Limita la altura máxima */
         margin: 0 auto; /* Centra el canvas dentro del contenedor */
     }
+    .cards{
+      max-width: 800px; /* Limita el ancho máximo */
+      height: auto; /* Ajusta automáticamente la altura */
+      max-height: 300px; /* Limita la altura máxima */
+      margin: 0 auto; /* Centra el canvas dentro del contenedor */
+    }
     .myChart {
     width: 100%; /* Ajusta el ancho según el contenedor padre */
     max-width: 800px; /* Tamaño máximo en píxeles */
@@ -126,223 +132,336 @@
     }
 
 
+    
+.wrapper {
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+
+}
+
+.wrapper i {
+  height: 50px;
+  width: 50px;
+  background: rgb(118, 233, 118);
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  font-size: 1.25 rem;
+  transform: translateY(-50%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+
+}
+
+.wrapper i:first-child {
+  left: -22px;
+  z-index: 10; /* Asegúrate que sea mayor que el de las tarjetas */
+
+
+}
+
+.wrapper i:last-child {
+  right: 22px;
+  z-index: 10; /* Asegúrate que sea mayor que el de las tarjetas */
+
+}
+
+.wrapper .carousel {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: 0;
+  
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* Ayuda a que las tarjetas se alineen al hacer scroll */
+  -webkit-overflow-scrolling: touch; /* Suaviza el scroll en dispositivos táctiles */
+  scroll-behavior: smooth;
+  width: 90%; /* Ajusta el tamaño según tus necesidades */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel :where(.card, .img) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.carousel.no-transition {
+  scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+  cursor: grab;
+  user-select: none;
+}
+
+.carousel .card {
+  scroll-snap-align: start;
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+@media screen and (max-width: 900px) {
+  .wrapper .carousel {
+      grid-auto-columns: calc((100% / 2) - 9px);
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper .carousel {
+      grid-auto-columns: 100%;
+
+  }
+}
+
+
 /*Cards Style*/
 
 .card {
-    background-color: transparent;
-    border: 0;
-    width: 320px;
-    height: 200px;
-    border-radius: 10px;
-    perspective: 1000px;
-  }
-  .card:hover .card-inner {
-    transform: rotateY(180deg);
-  }
-  .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    transition: transform 600ms ease;
-    transform-style: preserve-3d;
-    box-shadow: 0 0 25px 2px rgba(0, 0, 0, 0.2);
-  }
-  .card-front, .card-back {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    backface-visibility: hidden;
-    background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
-  }
-  .card-front {
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    transition: transform 300ms ease-in-out;
-  }
-  .card-back {
-    transform: rotateY(180deg);
-  }
-  .card-back::before {
-    content: "";
-    position: absolute;
-    top: 40%;
-    left: 20%;
-    width: 180%;
-    height: 120%;
-    border-radius: 100%;
-    background-image: linear-gradient(to right top, #a3d4e7, #a7d5e6, #abd5e4, #aed6e3, #b2d6e2, #aed4e2, #abd3e1, #a7d1e1, #9bcee1, #8ecae1, #81c7e1, #73c3e1);
-    filter: blur(10px);
-    opacity: 0.15;
-  }
-  .card-back::after {
-    content: "";
-    position: absolute;
-    top: 15%;
-    width: 100%;
-    height: 40px;
-    background-image: linear-gradient(to right top, #021318, #07191f, #0a1f26, #0b262e, #0c2c35, #0c2c35, #0c2c35, #0c2c35, #0b262e, #0a1f26, #07191f, #021318);
-  }
-  .card-bg {
-    position: absolute;
-    top: -20px;
-    right: -120px;
-    width: 380px;
-    height: 250px;
-    background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
-    border-top-left-radius: 100%;
-  }
-  .card-bg::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    right: -80px;
-    width: 380px;
-    height: 250px;
-    background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
-    border-top-left-radius: 100%;
-  }
-  .card-bg::after {
-    content: "";
-    position: absolute;
-    top: -20px;
-    right: -120px;
-    width: 380px;
-    height: 250px;
-    background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
-    border-top-left-radius: 100%;
-  }
-  .card-glow {
-    position: absolute;
-    top: -140px;
-    left: -65px;
-    height: 200px;
-    width: 400px;
-    background: rgba(0, 183, 255, 0.4);
-    filter: blur(10px);
-    border-radius: 100%;
-    transform: skew(-15deg, -15deg);
-  }
-  .card-contactless {
-    position: absolute;
-    right: 15px;
-    top: 55px;
-    transform: scale(0.5);
-  }
-  .card-chip {
-    position: absolute;
-    top: 65px;
-    left: 25px;
-    width: 45px;
-    height: 34px;
-    border-radius: 5px;
-    background-color: #ffda7b;
-    overflow: hidden;
-  }
-  .card-chip::before {
-    content: "";
-    position: absolute;
-    left: 49%;
-    top: -7%;
-    transform: translateX(-50%);
-    background: #ffda7b;
-    border: 1px solid #a27c1f;
-    width: 25%;
-    height: 110%;
-    border-radius: 100%;
-    z-index: 2;
-  }
-  .card-chip::after {
-    content: "";
-    position: absolute;
-    top: 30%;
-    left: -10%;
-    background: transparent;
-    border: 1px solid #a27c1f;
-    width: 120%;
-    height: 33%;
-  }
-  .card-holder {
-    position: absolute;
-    left: 25px;
-    bottom: 30px;
-    color: white;
-    font-size: 14px;
-    letter-spacing: 0.2em;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
-  }
-  .card-number {
-    position: absolute;
-    left: 25px;
-    bottom: 65px;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
-  }
-  .card-valid {
-    position: absolute;
-    right: 25px;
-    bottom: 30px;
-    color: white;
-    font-size: 14px;
-    letter-spacing: 0.2em;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
-  }
-  .card-valid::before {
-    content: "GOOD THRU";
-    position: absolute;
-    top: 1px;
-    left: -35px;
-    width: 50px;
-    font-size: 7px;
-  }
-  .card-signature {
-    position: absolute;
-    top: 120px;
-    left: 15px;
-    width: 70%;
-    height: 30px;
-    background: #eeecec;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #021318;
-    font-family: "Mr Dafoe", cursive;
-    font-size: 38px;
-    font-weight: 400;
-  }
-  .card-signature::before {
-    content: "Authorized Signature";
-    position: absolute;
-    top: -15px;
-    left: 0;
-    font-family: "Overpass Mono", monospace;
-    font-size: 9px;
-    color: #eeecec;
-  }
-  .card-seccode {
-    position: absolute;
-    top: 125px;
-    left: 245px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 17px;
-    color: #021318;
-    background-color: #eeecec;
-    text-align: center;
-    font-size: 11px;
-  }
-  
-  .logo {
-    position: absolute;
-    right: 25px;
-    top: 30px;
-  }
+
+  flex: 0 0 auto;
+  width: 80%; /* Ajusta el ancho de la tarjeta */
+  margin-right: 10%; /* Deja un margen para que la siguiente tarjeta se vea parcialmente */
+  scroll-snap-align: start; /* Alineación para el scroll suave */
+  box-sizing: border-box;
+
+  background-color: transparent;
+  border: 0;
+  width: 320px;
+  height: 200px;
+  border-radius: 10px;
+}
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: transform 600ms ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 25px 2px rgba(0, 0, 0, 0.2);
+}
+.card-front, .card-back {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
+}
+.card-front {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 300ms ease-in-out;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+.card-back::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  width: 180%;
+  height: 120%;
+  border-radius: 100%;
+  background-image: linear-gradient(to right top, #a3d4e7, #a7d5e6, #abd5e4, #aed6e3, #b2d6e2, #aed4e2, #abd3e1, #a7d1e1, #9bcee1, #8ecae1, #81c7e1, #73c3e1);
+  filter: blur(10px);
+  opacity: 0.15;
+}
+.card-back::after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  height: 40px;
+  background-image: linear-gradient(to right top, #021318, #07191f, #0a1f26, #0b262e, #0c2c35, #0c2c35, #0c2c35, #0c2c35, #0b262e, #0a1f26, #07191f, #021318);
+}
+.card-bg {
+  position: absolute;
+  top: -20px;
+  right: -120px;
+  width: 380px;
+  height: 250px;
+  background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
+  border-top-left-radius: 100%;
+}
+.card-bg::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -80px;
+  width: 380px;
+  height: 250px;
+  background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
+  border-top-left-radius: 100%;
+}
+.card-bg::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -120px;
+  width: 380px;
+  height: 250px;
+  background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
+  border-top-left-radius: 100%;
+}
+.card-glow {
+  position: absolute;
+  top: -140px;
+  left: -65px;
+  height: 200px;
+  width: 400px;
+  background: rgba(0, 183, 255, 0.4);
+  filter: blur(10px);
+  border-radius: 100%;
+  transform: skew(-15deg, -15deg);
+}
+.card-contactless {
+  position: absolute;
+  right: 15px;
+  top: 55px;
+  transform: scale(0.5);
+}
+.card-chip {
+  position: absolute;
+  top: 65px;
+  left: 25px;
+  width: 45px;
+  height: 34px;
+  border-radius: 5px;
+  background-color: #ffda7b;
+  overflow: hidden;
+}
+.card-chip::before {
+  content: "";
+  position: absolute;
+  left: 49%;
+  top: -7%;
+  transform: translateX(-50%);
+  background: #ffda7b;
+  border: 1px solid #a27c1f;
+  width: 25%;
+  height: 110%;
+  border-radius: 100%;
+  z-index: 2;
+}
+.card-chip::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: -10%;
+  background: transparent;
+  border: 1px solid #a27c1f;
+  width: 120%;
+  height: 33%;
+}
+.card-holder {
+  position: absolute;
+  left: 25px;
+  bottom: 30px;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+.card-number {
+  position: absolute;
+  left: 25px;
+  bottom: 65px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+.card-valid {
+  position: absolute;
+  right: 25px;
+  bottom: 30px;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+.card-valid::before {
+  content: "GOOD THRU";
+  position: absolute;
+  top: 1px;
+  left: -35px;
+  width: 50px;
+  font-size: 7px;
+}
+.card-signature {
+  position: absolute;
+  top: 120px;
+  left: 15px;
+  width: 70%;
+  height: 30px;
+  background: #eeecec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #021318;
+  font-family: "Mr Dafoe", cursive;
+  font-size: 38px;
+  font-weight: 400;
+}
+.card-signature::before {
+  content: "Authorized Signature";
+  position: absolute;
+  top: -15px;
+  left: 0;
+  font-family: "Overpass Mono", monospace;
+  font-size: 9px;
+  color: #eeecec;
+}
+.card-seccode {
+  position: absolute;
+  top: 125px;
+  left: 245px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 17px;
+  color: #021318;
+  background-color: #eeecec;
+  text-align: center;
+  font-size: 11px;
+}
+
+.logo {
+  position: absolute;
+  right: 25px;
+  top: 30px;
+}
