@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.4.4",
     "financial-tracker": "file:",
     "ng2-charts": "^6.0.1",
