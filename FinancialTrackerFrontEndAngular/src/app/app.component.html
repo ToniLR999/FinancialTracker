@@ -10,24 +10,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="app.component.css">
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
-        <script>
-          const links = document.querySelectorAll('.nav-link');
-          console.log(links);
-          console.log("Hola");
-
-          links.forEach(link => {
-              link.addEventListener('click', function(event) {
-                  // Previene el comportamiento por defecto del enlace
-                  event.preventDefault();
-
-                  // Remueve la clase 'active' de todos los enlaces
-                  links.forEach(l => l.classList.remove('active'));
-
-                  // Añade la clase 'active' al enlace clicado
-                  this.classList.add('active');
-              });
-          });
-      </script>
     </head>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -102,7 +84,7 @@
               <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                   <a #navLink (click)="onLinkClick($event)" routerLink="/Home" class="nav-link text-white active fs-5" aria-current="page">
-                    <svg class="bi me-2" width="20" height="20"><use xlink:href="#grid"/></svg>
+                    <svg class="bi bi-grid" width="20" height="20"><use xlink:href="#grid"/></svg>
                     
                     Dashboard
                   </a>

@@ -68,9 +68,10 @@
     max-width: 100%;
     white-space: nowrap;
     background-color: rgba(33,37,41,255);
-    height: 40%; 
+    height: 100%; 
     display: inline-block;
     overflow: hidden;
+    min-width: 100%;
 }
   
   
@@ -81,14 +82,17 @@
   
   .fl-table td {
     font-size: 12px;
-    width: 24%;
+
+  }
+  .fl-table tr {
+    min-width: 100%;
+
 
   }
   
   .fl-table thead th {
     color: #ffffff;
     background: #4FC3A1;
-    width: 24%;
 
   }
   
