@@ -33,8 +33,6 @@ export class HomeComponent  implements OnInit, AfterViewInit  {
   ngAfterViewInit(): void {
     const canvas = this.myChart.nativeElement;
     const ctx = canvas.getContext('2d');
-
-    console.log('ViewChild:', this.myChart, ctx); // Debería mostrar información sobre el canvas
     
     const carousel = this.carousel.nativeElement;
     const wrapper = this.wrapper.nativeElement;
