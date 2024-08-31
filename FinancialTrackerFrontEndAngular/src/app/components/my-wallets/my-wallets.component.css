@@ -1,7 +1,6 @@
 
 .bi {
     vertical-align: -.125em;
-    pointer-events: none;
     fill: currentColor;
   }
 
@@ -56,6 +55,139 @@
       padding: 5px;
   }
     
+
+  .cards{
+    max-width: 800px; /* Limita el ancho máximo */
+    height: auto; /* Ajusta automáticamente la altura */
+    max-height: 300px; /* Limita la altura máxima */
+    margin: 0 auto; /* Centra el canvas dentro del contenedor */
+  }
+  .myChart {
+  width: 100%; /* Ajusta el ancho según el contenedor padre */
+  max-width: 800px; /* Tamaño máximo en píxeles */
+  height: auto; /* Mantiene la proporción del gráfico */
+  max-height: 300px; /* Tamaño máximo en altura */
+  }
+  .graphicAndCardData{
+      display: grid;
+      grid-template-columns: auto auto;
+      padding: 5px;
+  }
+  
+  .APIsData{
+      display: grid;
+      grid-template-columns: auto auto auto;
+      padding: 5px;
+  }
+
+
+  
+.wrapper {
+max-width: 500px;
+width: 100%;
+position: relative;
+
+}
+
+.wrapper i {
+height: 50px;
+width: 50px;
+background: #21be72;
+text-align: center;
+line-height: 50px;
+border-radius: 50%;
+cursor: pointer;
+position: absolute;
+top: 50%;
+font-size: 1.25 rem;
+transform: translateY(-50%);
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+
+}
+
+.wrapper i:first-child {
+left: -22px;
+z-index: 10; /* Asegúrate que sea mayor que el de las tarjetas */
+
+
+}
+
+.wrapper i:last-child {
+right: 22px;
+z-index: 10; /* Asegúrate que sea mayor que el de las tarjetas */
+
+}
+
+.wrapper .carousel {
+display: grid;
+grid-auto-flow: column;
+gap: 16px;
+overflow-x: auto;
+scroll-snap-type: x mandatory;
+scroll-behavior: smooth;
+scrollbar-width: 0;
+
+}
+
+.carousel {
+display: flex;
+overflow-x: auto;
+scroll-snap-type: x mandatory; /* Ayuda a que las tarjetas se alineen al hacer scroll */
+-webkit-overflow-scrolling: touch; /* Suaviza el scroll en dispositivos táctiles */
+scroll-behavior: smooth;
+width: 90%; /* Ajusta el tamaño según tus necesidades */
+}
+
+.carousel::-webkit-scrollbar {
+display: none;
+}
+
+.carousel :where(.card, .img) {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.carousel.dragging {
+scroll-snap-type: none;
+scroll-behavior: auto;
+}
+
+.carousel.no-transition {
+scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+cursor: grab;
+user-select: none;
+}
+
+.carousel .card {
+scroll-snap-align: start;
+list-style: none;
+display: flex;
+cursor: pointer;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+.bi{
+pointer-events: auto;
+}
+
+@media screen and (max-width: 900px) {
+.wrapper .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+
+}
+}
+
+@media screen and (max-width: 600px) {
+.wrapper .carousel {
+    grid-auto-columns: 100%;
+
+}
+}
 
   /*Cards Style*/
 
@@ -277,3 +409,121 @@
     right: 25px;
     top: 30px;
   }
+
+  
+  /* Table Styles */
+
+
+.fl-table {
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: rgba(33,37,41,255);
+  height: 100%; 
+  display: inline-block;
+  overflow: hidden;
+  min-width: 100%;
+}
+
+
+.fl-table td, .fl-table th {
+  text-align: center;
+  padding: 8px;
+}
+
+.fl-table td {
+  font-size: 12px;
+
+}
+.fl-table tr {
+  min-width: 100%;
+
+
+}
+
+.fl-table thead th {
+  color: #ffffff;
+  background: #4FC3A1;
+
+}
+
+
+.fl-table thead th:nth-child(odd) {
+  color: #ffffff;
+  background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+  background: rgba(33,37,41,255);
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+  .fl-table {
+      display: block;
+      width: 100%;
+  }
+  .table-wrapper:before{
+      content: "Scroll horizontally >";
+      display: block;
+      text-align: right;
+      font-size: 11px;
+      color: white;
+      padding: 0 0 10px;
+  }
+  .fl-table thead, .fl-table tbody, .fl-table thead th {
+      display: block;
+  }
+  .fl-table thead th:last-child{
+      border-bottom: none;
+  }
+  .fl-table thead {
+      float: left;
+  }
+  .fl-table tbody {
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+  }
+  .fl-table td, .fl-table th {
+      padding: 20px .625em .625em .625em;
+      height: 60px;
+      vertical-align: middle;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 120px;
+      font-size: 13px;
+      text-overflow: ellipsis;
+  }
+  .fl-table thead th {
+      text-align: left;
+      border-bottom: 1px solid #f7f7f9;
+  }
+  .fl-table tbody tr {
+      display: table-cell;
+  }
+  .fl-table tbody tr:nth-child(odd) {
+      background: none;
+  }
+  .fl-table tr:nth-child(even) {
+      background: transparent;
+  }
+  .fl-table tr td:nth-child(odd) {
+      background: #F8F8F8;
+      border-right: 1px solid #E6E4E4;
+  }
+  .fl-table tr td:nth-child(even) {
+      border-right: 1px solid #E6E4E4;
+  }
+  .fl-table tbody td {
+      display: block;
+      text-align: center;
+  }
+}

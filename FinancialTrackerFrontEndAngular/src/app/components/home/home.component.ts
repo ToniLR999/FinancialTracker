@@ -24,7 +24,6 @@ export class HomeComponent  implements OnInit, AfterViewInit  {
   constructor(private renderer: Renderer2){
     Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, LineController);
 
-
   }
   
   ngOnInit(): void {
@@ -50,7 +49,7 @@ export class HomeComponent  implements OnInit, AfterViewInit  {
     this.renderer.listen(this.arrowLeft.nativeElement, 'click', () => this.scrollCarousel(-this.firstCardWidth));
     this.renderer.listen(this.arrowRight.nativeElement, 'click', () => this.scrollCarousel(this.firstCardWidth));
 
-    this.autoPlay();
+    
 
     if (ctx) {
       new Chart(ctx, {

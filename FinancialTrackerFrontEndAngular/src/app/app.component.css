@@ -1,4 +1,6 @@
-
+*{
+  overflow: hidden;
+}
 main{
     display: flex;
     flex-wrap: nowrap;
