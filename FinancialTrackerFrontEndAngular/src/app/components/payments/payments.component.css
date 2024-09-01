@@ -56,6 +56,11 @@
 
 
   /* Table Styles */
+  .table-data{
+    flex: 1; /* Permite que el contenedor de la tabla se expanda */
+    display: flex; /* Flex para alinear la tabla */
+    align-items: stretch; /* Asegura que la tabla ocupe todo el espacio vertical */
+  }
 
 
 .fl-table {
@@ -69,8 +74,6 @@
     white-space: nowrap;
     background-color: rgba(33,37,41,255);
     height: 100%; 
-    display: inline-block;
-    overflow: hidden;
     min-width: 100%;
 }
   
@@ -78,6 +81,8 @@
   .fl-table td, .fl-table th {
     text-align: center;
     padding: 8px;
+    width: 20%; /* Asegura que todas las columnas tengan el mismo tamaño */
+
   }
   
   .fl-table td {
@@ -86,6 +91,8 @@
   }
   .fl-table tr {
     min-width: 100%;
+    width: 100%; /* Ajusta la fila para que use todo el ancho */
+
 
 
   }

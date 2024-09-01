@@ -438,11 +438,7 @@ pointer-events: auto;
   .transactions-data{
     margin-top: 2.5em;
   }
-  .transactions{
-    height: 25vh; 
-  overflow-x: hidden;
-  overflow-y: scroll;
-  }
+
 .cards{
       margin-top: 2.5em;
 
@@ -500,6 +496,15 @@ pointer-events: auto;
     color: #289672;
   }
 
+  .transactions{
+    height: 50vh; 
+  overflow-x: hidden;
+  overflow-y: auto;
+  }
+  .mycards{
+    margin-top: 2.5em;
+
+  }
   
   details {
     border-bottom: 1px solid #b5bfd9;
@@ -528,17 +533,64 @@ pointer-events: auto;
   }
   .actions{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
-  .actions button{
-    border-radius: 50%;
-    background-color: #21be72;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    padding: 5px;
-    color: white;
-    box-shadow: 0 2px 4px darkslategray;
 
+  @media only screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px){
+
+  .transactions{
+    height: 25vh; 
+  overflow-x: hidden;
+  overflow-y: scroll;
   }
+}
+
+.button{
+display: block;
+}
+
+/* CSS */
+.button-27 {
+  border-radius: 50%;
+  border: none;
+  margin: 4px 2px;
+  appearance: none;
+  background-color:  #21be72;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  min-width: 0;
+  outline: none;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 70px;
+  height: 60px;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
