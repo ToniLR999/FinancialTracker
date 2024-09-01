@@ -410,120 +410,135 @@ pointer-events: auto;
     top: 30px;
   }
 
+  /**Transactions data*/
+
+  section {
+    width: 90%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  section + section {
+    margin-top: 2.5em;
+  }
   
-  /* Table Styles */
-
-
-.fl-table {
-  border-radius: 5px;
-  font-size: 12px;
-  font-weight: normal;
-  border: none;
-  border-collapse: collapse;
-  width: 100%;
-  max-width: 100%;
-  white-space: nowrap;
-  background-color: rgba(33,37,41,255);
-  height: 100%; 
-  display: inline-block;
-  overflow: hidden;
-  min-width: 100%;
-}
-
-
-.fl-table td, .fl-table th {
-  text-align: center;
-  padding: 8px;
-}
-
-.fl-table td {
-  font-size: 12px;
+  .transactions-data h2 {
+    line-height: 1.125;
+    font-size: clamp(1rem, 2vw, 2rem);
+  }
+  
+  .transactions-data h3 {
+    margin-top: 0.25em;
+    color: #999;
+    font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  }
+  .transactions-data h3 + * {
+    margin-top: 1.5em;  
+  }
+  .transactions-data{
+    margin-top: 2.5em;
+  }
+  .transactions{
+    height: 25vh; 
+  overflow-x: hidden;
+  overflow-y: scroll;
+  }
+.cards-section{
+  margin-top: 2.5em;
 
 }
-.fl-table tr {
-  min-width: 100%;
+  summary {
+    position: relative;
+    cursor: pointer;
+    padding: 1em 0.5em;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary:hover {
+    background-color: #f2f5f9;
+  }
+  summary div {
+    display: flex;
+    align-items: center;
+  }
+  summary h3 {
+    display: flex;
+    flex-direction: column;
+  }
+  summary small {
+    color: #999;
+    font-size: 0.875em;
+  }
+  summary strong {
+    font-weight: 700;
+  }
+  summary span:first-child {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 10px;
+    background-color: #f3e1e1;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.25em;
+  }
+  summary span:first-child svg {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  summary span:last-child {
+    font-weight: 700;
+    margin-left: auto;
+  }
+  summary:focus {
+    outline: none;
+  }
+  summary .plus {
+    color: #289672;
+  }
 
+  
+  details {
+    border-bottom: 1px solid #b5bfd9;
+  }
+  details[open] {
+    box-shadow: -3px 0 0 #b5bfd9;
+  }
+  details:first-of-type {
+    border-top: 1px solid #b5bfd9;
+  }
+  details > div {
+    padding: 2em 2em 0;
+    font-size: 0.875em;
+  }
+  
+  dl {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  dl dt {
+    font-weight: 700;
+  }
+  dl div {
+    margin-right: 4em;
+    margin-bottom: 2em;
+  }
+  .actions{
+    display: flex;
+    justify-content: space-between;
+  }
 
-}
+  .actions button{
+    border-radius: 50%;
+    background-color: #21be72;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 5px;
+    color: white;
+    box-shadow: 0 2px 4px darkslategray;
 
-.fl-table thead th {
-  color: #ffffff;
-  background: #4FC3A1;
-
-}
-
-
-.fl-table thead th:nth-child(odd) {
-  color: #ffffff;
-  background: #324960;
-}
-
-.fl-table tr:nth-child(even) {
-  background: rgba(33,37,41,255);
-}
-
-/* Responsive */
-
-@media (max-width: 767px) {
-  .fl-table {
-      display: block;
-      width: 100%;
   }
-  .table-wrapper:before{
-      content: "Scroll horizontally >";
-      display: block;
-      text-align: right;
-      font-size: 11px;
-      color: white;
-      padding: 0 0 10px;
-  }
-  .fl-table thead, .fl-table tbody, .fl-table thead th {
-      display: block;
-  }
-  .fl-table thead th:last-child{
-      border-bottom: none;
-  }
-  .fl-table thead {
-      float: left;
-  }
-  .fl-table tbody {
-      width: auto;
-      position: relative;
-      overflow-x: auto;
-  }
-  .fl-table td, .fl-table th {
-      padding: 20px .625em .625em .625em;
-      height: 60px;
-      vertical-align: middle;
-      box-sizing: border-box;
-      overflow-x: hidden;
-      overflow-y: auto;
-      width: 120px;
-      font-size: 13px;
-      text-overflow: ellipsis;
-  }
-  .fl-table thead th {
-      text-align: left;
-      border-bottom: 1px solid #f7f7f9;
-  }
-  .fl-table tbody tr {
-      display: table-cell;
-  }
-  .fl-table tbody tr:nth-child(odd) {
-      background: none;
-  }
-  .fl-table tr:nth-child(even) {
-      background: transparent;
-  }
-  .fl-table tr td:nth-child(odd) {
-      background: #F8F8F8;
-      border-right: 1px solid #E6E4E4;
-  }
-  .fl-table tr td:nth-child(even) {
-      border-right: 1px solid #E6E4E4;
-  }
-  .fl-table tbody td {
-      display: block;
-      text-align: center;
-  }
-}
