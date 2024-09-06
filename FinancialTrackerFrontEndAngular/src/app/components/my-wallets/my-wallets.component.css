@@ -199,9 +199,10 @@ pointer-events: auto;
     border-radius: 10px;
     perspective: 1000px;
   }
+  /*
   .card:hover .card-inner {
     transform: rotateY(180deg);
-  }
+  }*/
   .card-inner {
     position: relative;
     width: 100%;
@@ -503,6 +504,8 @@ pointer-events: auto;
   }
   .mycards{
     margin-top: 2.5em;
+    width: auto;
+    overflow: none;
 
   }
   
@@ -594,3 +597,70 @@ display: block;
   box-shadow: none;
   transform: translateY(0);
 }
+
+/*new carousel just for mywallets screen*/
+
+
+.cards-wrapper {
+  width:100%;
+  height:500px;
+  max-width:100%;
+  overflow-x:hidden;
+  position:relative;
+}
+
+.cards {
+  position:absolute;
+  top:15px;
+  left:50%;
+  transform:translateX(-110px);
+  display:flex;
+  flex-direction:row;
+  width:100%;
+  justify-content:space-between;
+}
+
+
+.cards-wrapper::after {
+  content:'';
+  display:block;
+  position:absolute;
+  top:0;
+  width:100%;
+  max-width:1200px;
+  height:100%;
+  pointer-events:none;
+}
+
+.arrow-btn {
+  width:40px;
+  height:40px;
+  background:#fff;
+  border-radius:50%;
+  border:none;
+  box-shadow: 0 6px 8px #00000030;
+  position:absolute;
+  top:50%;
+  left:20px;
+  transform:translateY(-50%);
+  z-index:1000;
+  cursor:pointer;
+}
+
+.arrow-btn-next {
+  left:auto;
+  right:20px;
+}
+
+.arrow-btn svg {
+  fill:#333;
+  position:absolute;
+  height:80%;  
+  left:50%;
+  top:50%;
+  transform:translate(-60%,-50%);
+}
+
+.arrow-btn-next svg {
+  transform:translate(-40%,-50%);
+}    

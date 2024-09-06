@@ -69,7 +69,7 @@
   .login-html .sign-in:checked + .tab,
   .login-html .sign-up:checked + .tab{
       color:#fff;
-      border-color:#0a6bff;
+      border-color:#21be72;
   }
   .login-form{
       min-height:345px;
@@ -103,10 +103,10 @@
       font-size:12px;
   }
   .login-form .group .button{
-      background:#0a6bff;
+      background:#21be72;
   }
   .login-form .group .button:hover{
-      background:#065dd8;
+      background:#21be72;
   }
   .login-form .group label .icon{
       width:15px;
@@ -140,7 +140,7 @@
       color:#fff;
   }
   .login-form .group .check:checked + label .icon{
-      background:#0a6bff;
+      background:#21be72;
   }
   .login-form .group .check:checked + label .icon:before{
       transform:scale(1) rotate(45deg);
