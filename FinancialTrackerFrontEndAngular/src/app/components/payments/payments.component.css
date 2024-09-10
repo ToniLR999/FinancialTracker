@@ -19,13 +19,44 @@
       justify-content: space-between;
       width: 100%;
       max-width: 100%;
+      margin-bottom: 2%;
   }
   .title{
       width: fit-content;
       color: white;
 
   }
+  .filters{
+display: flex;
+justify-content: space-between;
+    margin-bottom: 1.5em;
+  }
+  .filter input{
+    height: 2.5em;
+    border-radius: 5px;
+    padding: 7px 40px 7px 12px;
 
+
+  }
+
+  .inputwithicon {
+    position: relative; /* Establece un contenedor relativo para el posicionamiento absoluto */
+    display: flex; /* Para alinear el icono y el input */
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+.inputwithicon .icon {
+    position: absolute; /* Posiciona el icono de manera absoluta */
+    left: 10px; /* Distancia desde la izquierda del contenedor */
+    color: #aaa; /* Color del icono */
+    pointer-events: none; /* Para que no afecte la usabilidad del input */
+}
+
+.inputwithicon .input-field {
+    padding-left: 30px; /* Añade un espacio a la izquierda para que no se sobreponga al icono */
+    width: 100%; /* Ajusta el ancho del input */
+    box-sizing: border-box; /* Asegura que el padding se incluya dentro del ancho */
+}
   .dropdown{
       float: right;
   }
@@ -60,6 +91,11 @@
     flex: 1; /* Permite que el contenedor de la tabla se expanda */
     display: flex; /* Flex para alinear la tabla */
     align-items: stretch; /* Asegura que la tabla ocupe todo el espacio vertical */
+
+
+    flex-direction: column; /* Cambiado para alinear tabla y paginación verticalmente */
+    max-width: 100%; /* Limita el ancho máximo al tamaño del contenedor */
+
   }
 
 
@@ -113,6 +149,34 @@
     background: rgba(33,37,41,255);
   }
   
+  .pagination {
+    margin-top: 10px;
+    text-align: center;
+    display: flex; /* Alinea los botones de manera flexible */
+    justify-content: center; /* Centra los botones */
+    flex-wrap: wrap; /* Permite que los botones se envuelvan si son demasiados */
+    width: 100%; /* Asegura que el contenedor de la paginación ocupe el ancho completo */
+    padding: 10px 0; /* Añadir algo de espacio alrededor */
+    box-sizing: border-box; /* Incluye el padding en el tamaño del elemento */
+}
+
+.pagination button {
+    padding: 5px 10px;
+    margin: 0 2px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.pagination button.active {
+    background-color: #21be72;
+    color: white;
+    border-color: #21be72;
+}
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
   /* Responsive */
   
   @media (max-width: 767px) {
@@ -130,6 +194,8 @@
     }
     .fl-table thead, .fl-table tbody, .fl-table thead th {
         display: block;
+        width: 100%; /* Corrige el ancho para que la tabla no se salga */
+
     }
     .fl-table thead th:last-child{
         border-bottom: none;
@@ -177,4 +243,74 @@
         display: block;
         text-align: center;
     }
+    .pagination {
+      flex-direction: column; /* Hace que los botones de paginación sean verticales */
+      padding: 5px 0; /* Reduce el espacio en pantallas pequeñas */
+  }
+  }
+
+
+
+
+  /*---dropdown styles-----*/
+
+  .input {
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .select {
+    position: relative;
+    min-width: 200px;
+  }
+  .select svg {
+    position: absolute;
+    right: 12px;
+    top: calc(50% - 3px);
+    width: 10px;
+    height: 6px;
+    stroke-width: 2px;
+    stroke: #9098a9;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+  }
+  .select select {
+    -webkit-appearance: none;
+    padding: 7px 40px 7px 12px;
+    width: 100%;
+    border: 1px solid #e8eaed;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 1px 3px -2px #9098a9;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 150ms ease;
+  }
+  .select select:required:invalid {
+    color: #5a667f;
+  }
+  .select select option {
+    color: #223254;
+  }
+  .select select option[value=""][disabled] {
+    display: none;
+  }
+  .select select:focus {
+    outline: none;
+    border-color: #07f;
+    box-shadow: 0 0 0 2px rgba(0,119,255,0.2);
+  }
+  .select select:hover + svg {
+    stroke: #07f;
+  }
+  .sprites {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    user-select: none;
   }
