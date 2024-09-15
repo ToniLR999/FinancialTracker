@@ -44,7 +44,7 @@ public class MarketData {
 	    private BigDecimal close; // Precio de cierre
 
 	    @Column
-	    private Long volume; // Volumen de transacciones (opcional, puede ser nulo para divisas)
+	    private BigDecimal volume; // Volumen de transacciones (opcional, puede ser nulo para divisas)
 
 	    @Column
 	    private String market; // Para cryptos, mercado en que se comercializa (ej. USD, BTC)
@@ -117,11 +117,11 @@ public class MarketData {
 	        this.close = close;
 	    }
 
-	    public Long getVolume() {
+	    public BigDecimal getVolume() {
 	        return volume;
 	    }
 
-	    public void setVolume(Long volume) {
+	    public void setVolume(BigDecimal volume) {
 	        this.volume = volume;
 	    }
 

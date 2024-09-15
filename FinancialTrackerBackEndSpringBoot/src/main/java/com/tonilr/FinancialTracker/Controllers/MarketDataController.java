@@ -42,13 +42,43 @@ public class MarketDataController {
     }
 
     // Endpoint para obtener MarketData por símbolo y tipo de activo
-	@GetMapping("/get/{symbol}")
-    public String getMarketDataBySymbolAPI(
+	@GetMapping("/getStock/{symbol}")
+    public ResponseEntity<String> getStockDataBySymbolAPI(
     		@PathVariable("symbol") String symbol) {
-		System.out.println(symbol);
-		String marketDataJSON = apiServices.getStockData(symbol);
-        return marketDataJSON;
+		  try {
+		        String data = apiServices.getStockData(symbol);
+        return ResponseEntity.ok(data);
+		    } catch (Exception e) {
+		        // Manejo de errores
+		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener datos del mercado: " + e.getMessage());
+		    }
         		//new ResponseEntity<>(marketData, HttpStatus.OK);
+    }
+	
+    // Endpoint para obtener datos de Forex por símbolo
+    @GetMapping("/getForex/{fromSymbol}/{toSymbol}")
+    public ResponseEntity<String> getForexDataBySymbolsAPI(
+            @PathVariable("fromSymbol") String fromSymbol,
+            @PathVariable("toSymbol") String toSymbol) {
+        try {
+            String data = apiServices.getForexData(fromSymbol, toSymbol);
+            return ResponseEntity.ok(data);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener datos de Forex: " + e.getMessage());
+        }
+    }
+    
+    // Endpoint para obtener datos de Forex por símbolo
+    @GetMapping("/getCrypto/{symbol}/{market}")
+    public ResponseEntity<String> getCryptoDataBySymbolsAPI(
+            @PathVariable("symbol") String symbol,
+            @PathVariable("market") String market) {
+        try {
+            String data = apiServices.getCryptoData(symbol, market);
+            return ResponseEntity.ok(data);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener datos de Forex: " + e.getMessage());
+        }
     }
 	
 	@GetMapping("/find/{symbol}/{assetType}")
