@@ -16,15 +16,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tonilr.FinancialTracker.Entities.AssetType;
 import com.tonilr.FinancialTracker.Entities.MarketData;
+import com.tonilr.FinancialTracker.Services.APIServices;
 import com.tonilr.FinancialTracker.Services.MarketDataServices;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/marketData")
+@RequestMapping("/marketdata")
 public class MarketDataController {
 
 	@Autowired
     private final MarketDataServices marketDataService;
+	
+    @Autowired
+    private APIServices apiServices;
 	
 	public MarketDataController(MarketDataServices marketDataService) {
 		this.marketDataService = marketDataService;
@@ -38,6 +42,15 @@ public class MarketDataController {
     }
 
     // Endpoint para obtener MarketData por símbolo y tipo de activo
+	@GetMapping("/get/{symbol}")
+    public String getMarketDataBySymbolAPI(
+    		@PathVariable("symbol") String symbol) {
+		System.out.println(symbol);
+		String marketDataJSON = apiServices.getStockData(symbol);
+        return marketDataJSON;
+        		//new ResponseEntity<>(marketData, HttpStatus.OK);
+    }
+	
 	@GetMapping("/find/{symbol}/{assetType}")
     public ResponseEntity<List<MarketData>> findMarketDataBySymbol(
     		@PathVariable("symbol") String symbol, 

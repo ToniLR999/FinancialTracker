@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface MarketDataRepo extends JpaRepository<MarketData,Long>{
-
+    
 	// Consulta para encontrar datos por símbolo y tipo de activo
     List<MarketData> findBySymbolAndAssetType(String symbol, AssetType assetType);
 }
