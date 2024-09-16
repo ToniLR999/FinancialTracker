@@ -68,6 +68,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20230227</version> <!-- O la versión más reciente -->
+		</dependency>
+		<dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
     <version>42.5.0</version> <!-- Use the latest version available -->

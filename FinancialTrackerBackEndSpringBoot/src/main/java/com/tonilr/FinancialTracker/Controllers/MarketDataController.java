@@ -1,6 +1,7 @@
 package com.tonilr.FinancialTracker.Controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -79,6 +80,10 @@ public class MarketDataController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener datos de Forex: " + e.getMessage());
         }
+    }
+    @GetMapping("/getTop10Crypto")
+    public List<Map<String, String>> getTop10Cryptos() {
+        return apiServices.getTop10Cryptos();
     }
 	
 	@GetMapping("/find/{symbol}/{assetType}")

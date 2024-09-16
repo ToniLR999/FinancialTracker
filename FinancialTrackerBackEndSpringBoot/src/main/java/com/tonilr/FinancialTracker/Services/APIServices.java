@@ -1,6 +1,7 @@
 package com.tonilr.FinancialTracker.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -10,16 +11,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tonilr.FinancialTracker.Entities.AssetType;
 import com.tonilr.FinancialTracker.Entities.MarketData;
 import com.tonilr.FinancialTracker.repos.MarketDataRepo;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDate;
-import java.util.Iterator;
+import java.util.*;
+
 
 @Service
 public class APIServices {
-	 private final String API_KEY = "DMJY7MQ72LLNWTYS";  // Coloca tu API Key de Alpha Vantage aquí
-	 private final String BASE_URL = "https://www.alphavantage.co/query";
-	 
+		 private final String API_KEY = "DMJY7MQ72LLNWTYS";  // Coloca tu API Key de Alpha Vantage aquí
+		 private final String BASE_URL = "https://www.alphavantage.co/query";
+		 
 
 	    @Autowired
 	    private MarketDataRepo marketDataRepo;  // Inyectar el repositorio
@@ -27,7 +31,7 @@ public class APIServices {
 	    //@Autowired
 	    //private RestTemplate restTemplate;
 
-	 public String getStockData(String symbol){
+	    public String getStockData(String symbol){
 	        // Crear una instancia de RestTemplate
 		    RestTemplate restTemplate = new RestTemplate();
 
@@ -124,6 +128,59 @@ public class APIServices {
 	        
 	        // Devolver el cuerpo de la respuesta
 	        return response.getBody();
+	    }
+	    
+	 // Método para obtener las 10 criptomonedas con el precio más alto
+	    public List<Map<String, String>> getTop10Cryptos() {
+	    	RestTemplate restTemplate = new RestTemplateBuilder()
+	    	        .setConnectTimeout(Duration.ofSeconds(10))
+	    	        .setReadTimeout(Duration.ofSeconds(10))
+	    	        .build();
+	    	
+	        List<Map<String, String>> cryptoList = new ArrayList<>();
+
+	        // List of cryptocurrency symbols (This is an example, you'd normally fetch a larger set)
+	        String[] cryptos = {"BTC", "ETH", "BNB", "ADA", "XRP", "SOL", "DOT", "LTC", "LINK", "DOGE"};
+
+	        for (String crypto : cryptos) {
+	        	try {
+	            String url = String.format("%s?function=DIGITAL_CURRENCY_DAILY&symbol=%s&market=USD&apikey=%s", BASE_URL, crypto, API_KEY);
+	            String response = restTemplate.getForObject(url, String.class);
+
+	            if (response != null) {
+	                JSONObject jsonResponse = new JSONObject(response);
+	                System.out.println("Response for " + crypto + ": " + jsonResponse.toString(4));  // Formato indentado para facilitar lectura
+
+
+	                if (jsonResponse.has("Time Series (Digital Currency Daily)")) {
+	                    JSONObject timeSeries = jsonResponse.getJSONObject("Time Series (Digital Currency Daily)");
+	                    // Obtenemos el precio más reciente
+	                    String latestDate = (String) timeSeries.keys().next();
+	                    JSONObject latestData = timeSeries.getJSONObject(latestDate);
+	                    
+	                    String price = "";
+	                    // Ahora usamos la clave correcta "4. close"
+	                    if (latestData.has("4. close")) {
+	                        price = latestData.getString("4. close");
+	                    } else {
+	                        System.out.println("No se encontró el precio para " + crypto);
+	                        continue;
+	                    }
+	                    Map<String, String> cryptoData = new HashMap<>();
+	                    cryptoData.put("symbol", crypto);
+	                    cryptoData.put("price", price);
+	                    cryptoList.add(cryptoData);
+	                }
+	            }
+	        	  } catch (Exception e) {
+	                  System.out.println("Error fetching data for " + crypto + ": " + e.getMessage());
+
+	              }
+	        }
+
+	        // Ordenar por el precio y devolver las 10 con el precio más alto
+	        cryptoList.sort((c1, c2) -> Double.compare(Double.parseDouble(c2.get("price")), Double.parseDouble(c1.get("price"))));
+	        return cryptoList.subList(0, Math.min(10, cryptoList.size()));
 	    }
 	    
 	    public String getCryptoData(String symbol, String market) {
